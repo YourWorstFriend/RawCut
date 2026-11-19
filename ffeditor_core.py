@@ -25,7 +25,7 @@ from dataclasses import dataclass, field, replace
 from typing import Callable, Optional
 
 CREATE_NO_WINDOW = 0x08000000 if os.name == "nt" else 0
-APP_NAME = "FFEditor"
+APP_NAME = "RawCut"
 SAMPLE_RATE = 48000
 CHANNELS = 2
 
@@ -52,7 +52,7 @@ def cache_dir() -> str:
     """片段缓存目录：优先 %APPDATA%，不可写就退到系统临时目录"""
     if _CACHE_DIR_OK[0] is not None:
         return _CACHE_DIR_OK[0]
-    for d in (MEDIA_CACHE, os.path.join(tempfile.gettempdir(), "FFEditorCache")):
+    for d in (MEDIA_CACHE, os.path.join(tempfile.gettempdir(), "RawCutCache")):
         try:
             os.makedirs(d, exist_ok=True)
             probe_file = os.path.join(d, ".wtest")

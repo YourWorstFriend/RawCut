@@ -1,17 +1,17 @@
-# FF 剪辑 —— 按「剪映专业版」界面做的轻量剪辑器（快捷键按 Premiere）
+# RawCut —— 按「剪映专业版」界面做的轻量剪辑器（快捷键按 Premiere）
 
-绿色版：解压后双击 **`dist\FF剪辑\FF剪辑.exe`**（压缩包 `dist\FF剪辑-绿色版.zip`）。
+绿色版：解压后双击 **`dist\RawCut\RawCut.exe`**（压缩包 `dist\RawCut-1.0.0-win64.zip`）。
 仓库里还有 `sample.mp4` 可以直接拿来测。
 
-> 界面按剪映专业版排布，但品牌名保留「FF剪辑」，不冒充剪映。
+> 界面按剪映专业版排布，但品牌名保留「RawCut」，不冒充剪映。
 
 ## 运行要求
 
 - Windows 10 / 11（64 位）
 - **FFmpeg**：`ffmpeg.exe` + `ffprobe.exe`
   - 已安装并加入 PATH 即可（本机是 `winget install Gyan.FFmpeg` 那份）；
-  - 或放到 `FF剪辑.exe` 同目录；
-  - 都找不到会弹窗，可手动指定 ffmpeg 文件夹，记在 `%APPDATA%\FFEditor\config.json`。
+  - 或放到 `RawCut.exe` 同目录；
+  - 都找不到会弹窗，可手动指定 ffmpeg 文件夹，记在 `%APPDATA%\RawCut\config.json`。
 - **字体**：界面优先用 **MiSans**（装了就自动用，System 或用户字体都行）；
   没装则退回 Microsoft YaHei UI。时间码等数字读数固定用 Consolas，避免数字宽度跳动。
 
@@ -20,19 +20,19 @@
 exe 没有代码签名证书，Windows 会按「未知发布者」处理：
 
 1. **解除锁定**（最常见）：右键压缩包 → 属性 → 勾「解除锁定」→ 再解压；
-   或 `Unblock-File -Path "FF剪辑-绿色版.zip"`。
+   或 `Unblock-File -Path "RawCut-1.0.0-win64.zip"`。
 2. 弹「Windows 已保护你的电脑」→ 点「更多信息」→「仍要运行」。
 3. 不想每次点：把目录加进 Defender 排除项
    `Add-MpPreference -ExclusionPath "<完整路径>"`（管理员）。
 4. 彻底消除提示只能做代码签名：EV 证书签名后基本立刻通过；
    OV 证书便宜但新证书仍需积累信誉；自签名只能消掉「未知发布者」，SmartScreen 仍会拦。
 
-详细步骤也放在 `dist\FF剪辑\首次运行说明.txt`。
+详细步骤也放在 `dist\RawCut\首次运行说明.txt`。
 
 ## 界面
 
 ```
-┌ FF剪辑 菜单            未命名项目            快捷键 分享 [导出] ┐
+┌ RawCut 菜单            未命名项目            快捷键 分享 [导出] ┐
 │                         ║ 可上下拖动            ║              │
 ├────────────┬════════════╬══════════════════════╬══════════════┤
 │ 素材栏      ║  播放器     ║                      ║  画面 / 音频  │
@@ -81,7 +81,7 @@ exe 没有代码签名证书，Windows 会按「未知发布者」处理：
 
 ## 出问题了看这里
 
-运行出错会把堆栈写到 **`%APPDATA%\FFEditor\crash.log`**（无控制台时唯一的线索）。
+运行出错会把堆栈写到 **`%APPDATA%\RawCut\crash.log`**（无控制台时唯一的线索）。
 如果软件闪退，把最近的这份日志发出来即可定位。
 
 ## 时间线操作
@@ -105,7 +105,7 @@ exe 没有代码签名证书，Windows 会按「未知发布者」处理：
 | 单片段、无特效 | **直接播源文件**，不生成代理 | 4K / 454 秒素材：按空格 **0.7 秒**出画面 |
 | 多片段 / 有特效 | 生成 720p 代理再播 | 2 段小素材：0.7 秒；4K 素材约 8–12× 实时，454 秒约 50 秒 |
 
-代理**按片段缓存**（`%APPDATA%\FFEditor\proxy_cache`，不可写时退到临时目录）：
+代理**按片段缓存**（`%APPDATA%\RawCut\proxy_cache`，不可写时退到临时目录）：
 改一个片段只重算那一段，其余直接复用——实测同一工程再建一次从 0.7 秒降到 0.2 秒。
 生成期间继续编辑，旧结果会被丢弃重算，不会当成新的；预览角标显示进度和预计剩余秒数。
 
@@ -118,7 +118,7 @@ exe 没有代码签名证书，Windows 会按「未知发布者」处理：
 - `ffeditor_gui.py`：界面、分栏、时间线、播放器、拖放、快捷键
 - `ffeditor.ico`：图标
 
-本地运行：`python ffeditor_gui.py`；自检：`FF剪辑.exe --selftest sample.mp4`
+本地运行：`python ffeditor_gui.py`；自检：`RawCut.exe --selftest sample.mp4`
 
 ## 已知限制
 

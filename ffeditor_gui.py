@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-FF 剪辑 —— 界面按「剪映专业版」布局复刻，快捷键按 Adobe Premiere
+RawCut —— 界面按「剪映专业版」布局复刻，快捷键按 Adobe Premiere
 
   ┌ 顶栏：logo / 项目名 ────────────────────────── 快捷键 · 导出 ┐
   │ 素材库(左)   │      播放器(中)      │  属性面板(右)          │
@@ -129,7 +129,7 @@ F1          本窗口
 
 
 def _log_exc(tag=""):
-    """把异常写到 %APPDATA%\\FFEditor\\crash.log，方便无控制台时排查"""
+    """把异常写到 %APPDATA%\\RawCut\\crash.log，方便无控制台时排查"""
     try:
         os.makedirs(core.CFG_DIR, exist_ok=True)
         with open(os.path.join(core.CFG_DIR, "crash.log"), "a", encoding="utf-8") as f:
@@ -244,7 +244,7 @@ class App:
         self.s = max(1.0, root.winfo_fpixels("1i") / 96.0)
         root.tk.call("tk", "scaling", 96.0 * self.s / 72.0)
         resolve_ui_font(root)
-        root.title("FF 剪辑")
+        root.title("RawCut")
         try:
             root.overrideredirect(True)          # 自绘标题栏，去掉系统白条
         except Exception:
@@ -453,7 +453,7 @@ class App:
         logo.create_rectangle(1, 1, 21, 21, fill=ACCENT, outline="")
         logo.create_polygon(8, 6, 8, 16, 16, 11, fill="#101010", outline="")
 
-        name = tk.Label(bar, text="FF剪辑", bg="#181818", fg=FG, cursor="fleur",
+        name = tk.Label(bar, text="RawCut", bg="#181818", fg=FG, cursor="fleur",
                         font=(UI_FAMILY_BOLD, 11))
         name.pack(side="left")
         menu = tk.Label(bar, text="菜单", bg="#181818", fg=DIM, font=FONT_SM,
@@ -2703,7 +2703,7 @@ def selftest(files):
     root = tk.Tk()
     root.withdraw()
     app = App(root)
-    out = os.path.join(tempfile.gettempdir(), "ffeditor_selftest.txt")
+    out = os.path.join(tempfile.gettempdir(), "rawcut_selftest.txt")
     lines = []
     try:
         app.open_files(files)
