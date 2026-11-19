@@ -1,4 +1,4 @@
-# RawCut —— 按「剪映专业版」界面做的轻量剪辑器（快捷键按 Premiere）
+# RawCut —— 一个不重新编码、不会增大视频体积的简单剪辑软件
 
 绿色版：解压后双击 **`dist\RawCut\RawCut.exe`**（压缩包 `dist\RawCut-1.0.0-win64.zip`）。
 仓库里还有 `sample.mp4` 可以直接拿来测。
