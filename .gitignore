@@ -1,0 +1,15 @@
+# 构建产物
+dist/
+build/
+*.spec
+
+# 临时目录 / 缓存
+_t/
+__pycache__/
+*.pyc
+
+# 个人日志
+*.log
+
+home_shrine/
+slate/
