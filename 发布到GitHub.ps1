@@ -1,4 +1,4 @@
-# 把本地仓库推到你自己的 GitHub 仓库
+﻿# 把本地仓库推到你自己的 GitHub 仓库
 # 用法：  .\发布到GitHub.ps1 -RepoUrl "https://github.com/YourWorstFriend/RawCut.git"
 #
 # 第一次推送会弹出浏览器授权（Git Credential Manager），
